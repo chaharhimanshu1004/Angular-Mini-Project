@@ -6,7 +6,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
+import { userReducer } from './user/user.reducer';
+import { UserEffects } from './user/user.effect';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { localStorageSync } from 'ngrx-store-localstorage';
 
+export function localStorageSyncReducer(reducer: any): any {
+  return localStorageSync({ keys: ['user'], rehydrate: true })(reducer);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({ user: userReducer }),
+    EffectsModule.forRoot([UserEffects]),
+    StoreModule.forRoot({ user: userReducer }, { metaReducers: [localStorageSyncReducer] }),
   ],
   providers: [],
   bootstrap: [AppComponent]

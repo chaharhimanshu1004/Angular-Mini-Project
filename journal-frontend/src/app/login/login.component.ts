@@ -1,5 +1,14 @@
-import { Component } from '@angular/core';
+
 import { HttpClient } from '@angular/common/http';
+import * as UserActions from '../user/user.actions';
+import { AuthService } from './auth.service';
+import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { User } from '../user/user.model';
+import { selectUser } from '../user/user.selector';
+
+
 
 @Component({
   selector: 'app-login',
@@ -7,21 +16,37 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+ 
   email: string='';
   password: string='';
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private store : Store<any>
+  ) {}
+
+  user$: Observable<any> = this.store.pipe(select(selectUser));
+
+  ngOnInit(): void {
+    this.user$.subscribe(user => {
+      console.log('User in redux:', user);
+    });
+  }
+
 
   login() {
-    const userData = { email: this.email, password: this.password };
+    const user: User = { email: this.email, password: this.password }; 
+    this.authService.login(this.email,this.password).subscribe(
+      (response: any) => {
+        console.log('Login successful', response);
+        this.store.dispatch(UserActions.login({ user: response }));
 
-    this.http.post('http://localhost:3000/user/login', userData)
-      .subscribe(
-        (response) => {
-          console.log('Login successful', response);
-        },
-        (error) => {
-          console.error('Login error', error);
-        }
-      );
+      },
+      (error) => {
+        console.error('Login error', error);
+        this.store.dispatch(UserActions.loadUserFailure({ error }));
+      }
+    );
   }
-}
+  }
+
