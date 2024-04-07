@@ -7,6 +7,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { User } from '../user/user.model';
 import { selectUser } from '../user/user.selector';
+import { Router } from '@angular/router';
 
 
 
@@ -22,7 +23,8 @@ export class LoginComponent {
   constructor(
     private http: HttpClient,
     private authService: AuthService,
-    private store : Store<any>
+    private store : Store<any>,
+    private router: Router
   ) {}
 
   user$: Observable<any> = this.store.pipe(select(selectUser));
@@ -40,12 +42,13 @@ export class LoginComponent {
       (response: any) => {
         console.log('Login successful', response);
         this.store.dispatch(UserActions.login({ user: response }));
-
+        this.router.navigate(['/posts']);
       },
       (error) => {
         console.error('Login error', error);
         this.store.dispatch(UserActions.loadUserFailure({ error }));
       }
+  
     );
   }
   }

@@ -1,0 +1,112 @@
+.post-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+    height: 200px;
+  }
+  
+
+  .actionBtn button{
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 6px;
+  }
+  .dat{
+    margin-top: 70px;
+  }
+  /* .dat p{
+    text-align: center;
+  } */
+  .editPost{
+    background-color: #007bff;
+  }
+  .deletePost{
+    background-color: #c3331a;
+  }
+  .actionBtn{
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  .post-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .post-card h2 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    color: #333;
+    text-align: center;
+  }
+  
+  .post-card p {
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: #161010;
+  }
+  
+  .post-card .read-more {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .post-card .read-more:hover {
+    text-decoration: underline;
+  }
+  
+  .post-card .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .post-card .actions button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .post-card .actions button:hover {
+    background-color: #05366b;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bffdd; /* Navbar background color */
+    color: #fff; /* Navbar text color */
+    padding: 10px 20px;
+  }
+  
+  .navbar h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    
+  }
+  
+  .navbar-actions button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .navbar-actions button:hover {
+    background-color: rgba(7, 39, 169, 0.1);
+    border-radius: 5px;
+  }
+  

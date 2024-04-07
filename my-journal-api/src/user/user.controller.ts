@@ -14,7 +14,6 @@ export class UserController {
   }
   @Post('login')
   async login(@Body() loginUserDto: LoginUserDto) {
-    console.log("i am here at login route backend")
     return this.userService.login(loginUserDto);
   }
 }

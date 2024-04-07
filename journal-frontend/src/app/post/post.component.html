@@ -1,0 +1,26 @@
+<header class="navbar">
+    <h2>Your Personal Journal</h2>
+    <div class="navbar-actions">
+      <button (click)="createPost()" >Create Post</button>
+      <button (click)="logout()" >Logout</button>
+    </div>
+  </header>
+  <main>
+    <div *ngIf="post$ | async as posts" class="posts-container">
+      <div class="post-card" *ngFor="let post of posts">
+        <div class="content">
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.content }}</p>
+        </div>
+        <div class="dat">
+          <p><strong>Created At :</strong> {{ post.createdAt | date: 'medium' }}</p>
+        </div>
+        
+        <div class="actionBtn">
+          <button  class="editPost" (click)="editPost(post.id)" >Edit Post</button>
+          <button  class="deletePost" (click)="deletePost(post.id)" >Delet Post</button>
+        </div> 
+      </div>
+      </div>
+  </main>
+  

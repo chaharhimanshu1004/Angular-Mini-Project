@@ -12,6 +12,7 @@ export class PostController {
 
   @Get('/')
   async findAll(): Promise<PostEntity[]> {
+    console.log("At get posts route!")
     return this.postService.findAll();
   }
 

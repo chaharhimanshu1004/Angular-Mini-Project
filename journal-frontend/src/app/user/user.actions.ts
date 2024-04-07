@@ -5,7 +5,7 @@ export const login = createAction(
     '[User] Login',
   props<{ user: User }>()
     );
-export const logout = createAction('[Auth] Logout');
+export const logout = createAction('[User] Logout');
 export const loadUserFailure = createAction(
   '[User] Load User Failure',
   props<{ error: any }>()

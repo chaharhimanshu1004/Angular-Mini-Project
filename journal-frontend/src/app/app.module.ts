@@ -11,6 +11,9 @@ import { UserEffects } from './user/user.effect';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { localStorageSync } from 'ngrx-store-localstorage';
+import { PostComponent } from './post/post.component';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { EditPostComponent } from './edit-post/edit-post.component';
 
 export function localStorageSyncReducer(reducer: any): any {
   return localStorageSync({ keys: ['user'], rehydrate: true })(reducer);
@@ -19,7 +22,10 @@ export function localStorageSyncReducer(reducer: any): any {
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    PostComponent,
+    CreatePostComponent,
+    EditPostComponent
   ],
   imports: [
     BrowserModule,
