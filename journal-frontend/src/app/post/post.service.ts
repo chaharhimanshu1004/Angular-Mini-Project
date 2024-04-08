@@ -10,8 +10,9 @@ export class PostService {
   private apiUrl = 'http://localhost:3000/posts'
 
   constructor(private http: HttpClient) {}
-  getPosts(): Observable<Post[]> {
+  getPosts(userId: number): Observable<Post[]> {
     console.log("at frontend posts route")
-    return this.http.get<Post[]>(this.apiUrl);
+    const url = `${this.apiUrl}/?userId=${userId}`;
+    return this.http.get<Post[]>(url);
   }
 }

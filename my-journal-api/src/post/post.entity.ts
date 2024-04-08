@@ -8,9 +8,11 @@ export class Post {
   @Column()
   title: string;
 
+   @Column({ nullable: true })
+  userId: number;
+
   @Column()
   content: string;
-
   @CreateDateColumn({ type: 'integer' })
   createdAt: Date;
 }

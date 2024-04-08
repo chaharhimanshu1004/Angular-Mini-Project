@@ -5,5 +5,7 @@ export class CreatePostDto {
   title: string;
   @IsNotEmpty()
   content: string;
+  @IsNotEmpty()
+  userId: number;
   createdAt: Date = new Date(); 
 }

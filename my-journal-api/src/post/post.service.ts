@@ -14,8 +14,8 @@ export class PostService {
     private readonly postRepository: Repository<Post>,
   ) {}
 
-  async findAll(): Promise<Post[]> {
-    return this.postRepository.find();
+  async findAll(userId:number): Promise<Post[]> {
+    return this.postRepository.find({where: {userId}});
   }
 
   async findOne(id: number): Promise<Post> {
